@@ -1,4 +1,7 @@
-#setup
+#Notes
+Originally, this project was scoped to be a public chrome extension that users could just install and authenticate. However, Nest has made the approval process for using the API simply too involved for me to give that kind of time. So, it's open sourced...
+
+##setup
 you will need to add your own credentials from both Google and Nest:
 
 ###Google Developer Account
