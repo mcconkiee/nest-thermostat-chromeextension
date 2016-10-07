@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nest for Chrome</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <body ng-app="nest-extension">
+    <div id="wrapper" ng-controller="AuthCtrl" class="options col-sm-6 col-sm-offset-3">      
+      <div ng-controller="NestCtrl" >
+        <div ng-show="isLoading" id="spinner">
+          <span class="message">
+            
+            <img src="../images/nest-leaf_2x.png" class="img-responsive small" alt="leaf">            
+            <span >Loading...</span>
+          </span>
+        </div>
+        <ul class="devices">
+          <li  ng-repeat="device in devices track by $index" >
+            <div ng-controller="DeviceCtrl" ng-init="loadSlider($index,device)" id="device_$index">
+              <div class="table-responsive">
+                <table class="table vertical-aligned">
+                  <thead>
+                    <tr>                      
+                      <th>Location</th>
+                      <th>Current Temp</th>
+                      <th>Target Temp</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>                      
+                      <td>{{device.name_long}}</td>
+                      <td><span class="h2">{{device.ambient_temperature_f}}°</span></td>
+                      <td><span class="h2">{{device.target_temperature_f}}°</span></td>
+                      <td><input id="{{'slider_' + device.device_id}}"
+                        class="slider"
+                        type="text"
+                        ng-model="device"
+                        data-slider-id="{{device.device_id}}"
+                        data-slider-min="30"
+                        data-slider-max="90"
+                        data-slider-step="1"
+                        data-slider-reversed="true"
+                      data-slider-orientation="vertical"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>            
+            </li>
+          </ul>          
+        </div>
+      </div>
+      
+      <script src="../js/index.js"></script>
+      <script src="../js/app/app.js"></script>
+      <script src="../js/app/controllers/auth.js"></script>
+      <script src="../js/app/controllers/device.js"></script>
+      <script src="../js/app/controllers/options.js"></script>
+      <script src="../js/app/controllers/nest.js"></script>
+      <script src="../js/app/services/localStorage.js"></script>
+      <script src="../js/app/services/rest.js"></script>
+    </body>
+  </html>

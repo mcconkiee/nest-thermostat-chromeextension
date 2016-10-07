@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nest for Chrome</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <body ng-app="nest-extension">
+    <div class="container">
+      <div class="row">
+        <div id="wrapper" ng-controller="AuthCtrl" class="options col-sm-6 col-sm-offset-3">
+          <div ng-controller="NestCtrl" >
+            <ul class="devices">
+              <li  ng-repeat="device in devices track by $index" >
+                <div ng-controller="DeviceCtrl" ng-init="loadSlider($index,device)" id="device_$index">
+                  <div class="table-responsive">
+                    <table class="table vertical-aligned">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>Location</th>
+                          <th>Current Temp</th>
+                          <th>Target Temp</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><input id="{{'slider' + device.device_id}}"
+                            class="slider"
+                            type="text"
+                            ng-model="device"
+                            data-slider-id="{{device.device_id}}"
+                            data-slider-min="30"
+                            data-slider-max="90"
+                            data-slider-step="1"
+                            data-slider-reversed="true"
+                            data-slider-value="{{device.target_temperature_f}}"
+                          data-slider-orientation="vertical"/></td>
+                          <td>{{device.name_long}}</td>
+                          <td><span class="h2">{{device.ambient_temperature_f}}°</span></td>
+                          <td><span class="h2">{{device.target_temperature_f}}°</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="btn-group">
+            <a href="#" class="btn btn-default" ng-click="onReset($event);" ng-show="!needsAuth">Re-Authenticate</a>
+            <button type="button" class="btn btn-default" ng-click="onAuth($event);" ng-show="needsAuth">Authorize Nest</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h3>Credits</h3>
+            <table class="table vertical-aligned">
+              <tbody>
+                <tr>
+                  <td>
+                  <a href="https://thenounproject.com/term/nest-thermostat/248948/" title="Nest Icon  ">
+                    <img src="../icons/icon128.png" alt="icon" class="col-sm-2">
+                  </a>                    
+                  </td>
+                  <td>
+                  <a href="https://thenounproject.com/term/nest-thermostat/248948/" title="Richard Slater">
+                    Richard Slater
+                  </a>                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+    
+    
+    <script src="../js/index.js"></script>
+    <script src="../js/app/app.js"></script>
+    <script src="../js/app/controllers/auth.js"></script>
+    <script src="../js/app/controllers/device.js"></script>
+    <script src="../js/app/controllers/options.js"></script>
+    <script src="../js/app/controllers/nest.js"></script>
+    <script src="../js/app/services/localStorage.js"></script>
+    <script src="../js/app/services/rest.js"></script>
+  </body>
+</html>

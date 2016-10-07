@@ -1,0 +1,38 @@
+{
+    "name": "Nest Extension",
+    "version": "0.0.2",
+    "manifest_version": 2,
+    "description": "Fine tune your Nest Smart Learning thermostat",
+    "homepage_url": "http://ericmcconkie.com",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "default_locale": "en",
+    "options_page": "html/options.html",
+    "browser_action": {
+        "default_icon": "icons/icon19.png",
+        "default_title": "Nest thermostat fine tuner",
+        "default_popup": "html/index.html"
+    },
+    "permissions": [
+        "notifications",
+        "identity",
+        "storage",
+        "https://api.home.nest.com/*",
+        "https://home.nest.com/*",
+        "https://nest.com/robots.txt"
+    ],
+    "content_scripts": [{
+        "matches": ["https://nest.com/robots.txt*"],
+        "js": ["js/vendor/google/onload.js"],
+        "run_at": "document_start"
+    }],
+    "oauth2": {
+        "client_id": "XXX_",
+        "scopes": [
+            "https://www.googleapis.com/auth/drive"
+        ]
+    }
+}

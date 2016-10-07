@@ -1,0 +1,75 @@
+@import "node_modules/bootstrap/less/bootstrap.less";
+@import "node_modules/bootstrap-slider/less/bootstrap-slider.less";
+@import "node_modules/font-awesome/less/font-awesome.less";
+
+
+//custom
+#wrapper{
+	
+	&.options{
+	    
+	    padding: 20px;
+	}
+}
+span{
+	&.h3{
+		font-size: 15px;
+		
+	}
+	&.h2{
+		font-size: 30px;
+		font-weight: bold;		
+	}
+}
+.hide{
+	display: none;
+}
+
+ul.devices{
+	list-style: none;	
+}
+
+table.vertical-aligned{
+		tr{
+			td{
+				vertical-align: middle;
+				text-align: center;
+			}
+		}
+	}
+
+// LOADING 
+#spinner{
+	position: absolute;
+	left:0;
+	top:0;
+    width: 100%;
+    height: 100%;    
+    .message { 
+    	padding: 10px;
+    	text-align: center; 
+    	span {
+    		padding: 10px;
+    	}
+    }
+    img {
+    	padding: 15px;
+    }
+}
+
+
+//SLIDER
+.slider{
+	&.slider-vertical{
+		height: 110px;		
+	}	
+	.slider-track {
+		background: @brand-warning;
+		.slider-track-high {
+		    background: #74bf44;
+		}		
+		.slider-selection {
+		    background: @brand-warning;
+		}
+	}	
+}
